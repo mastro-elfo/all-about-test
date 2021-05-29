@@ -37,6 +37,9 @@ jobs:
             git status -uno --porcelain
             echo "Initiating Push site:mastro-elfo.it."
             git ftp init --user "$username" --passwd "$password" ftp.mastro-elfo.it/all-about-test/
+            else
+              echo "Not master branch so not deploying"
+            fi
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
