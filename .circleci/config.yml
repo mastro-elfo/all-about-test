@@ -26,6 +26,20 @@ jobs:
       - run:
           name: Run Tests
           command: yarn test
+
+      - run:
+          name: Deploy
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ]; then
+            apt-get update
+            apt-get -qq install git-ftp
+            echo "'_$(git status -uno --porcelain | wc -l)_'"
+            git status -uno --porcelain
+            echo "Initiating Push site:mastro-elfo.it."
+            git ftp init --user "$username" --passwd "$password" ftp.mastro-elfo.it/all-about-test/
+            else
+              echo "Not master branch so not deploying"
+            fi
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
