@@ -24,3 +24,5 @@ jobs:
         server: ftp.mastro-elfo.it
         username: 11141791@aruba.it
         password: ${{ secrets.password }}
+        local-dir: ./build/
+        server-dir: /www.mastro-elfo.it/all-about-test/
